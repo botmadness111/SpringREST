@@ -1,6 +1,9 @@
 package org.example.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import org.hibernate.annotations.Check;
 
 @Entity
 @Table(name = "person")
@@ -9,6 +12,7 @@ public class Person {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Min(value = 14, message = "age should be greater then 14")
     @Column(name = "age")
     private int age;
     @Column(name = "name")
