@@ -1,11 +1,12 @@
 package org.example.services;
 
+import jakarta.persistence.PersistenceException;
 import org.example.models.Person;
 import org.example.repositories.PersonRepository;
+import org.example.util.PersonNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PersonService {
@@ -21,6 +22,6 @@ public class PersonService {
     }
 
     public Person findById(int id) {
-        return personRepository.findById(id).orElse(null);
+        return personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
     }
 }
