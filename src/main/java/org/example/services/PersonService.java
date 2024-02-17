@@ -29,6 +29,12 @@ public class PersonService {
 
     @Transactional
     public void save(Person person) {
+        enrichPerson(person);
         personRepository.save(person);
+    }
+
+    private Person enrichPerson(Person person){
+        person.setPassword("123");
+        return person;
     }
 }
